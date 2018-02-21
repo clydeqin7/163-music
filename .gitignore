@@ -1,0 +1,5 @@
+# 忽略qinniu-key文件
+/qiniu-key.json
+#
+/node_modules
+
