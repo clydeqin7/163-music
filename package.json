@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
-    "qiniu": "^7.1.2"
+    "qiniu": "^7.1.2",
+    "qiniu-js": "^2.0.2"
   },
   "devDependencies": {},
   "scripts": {
