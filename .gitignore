@@ -1,5 +1,5 @@
 # 忽略qinniu-key文件
 /qiniu-key.json
-#
+# 忽略npm安装文件
 /node_modules
 
