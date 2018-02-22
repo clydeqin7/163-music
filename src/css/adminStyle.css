@@ -110,7 +110,7 @@ main > .operateArea-group > .operateTrigger > ul > li:hover {
   border: 1px solid #9b0909;
 }
 
-main > .operateArea-group > .uploadArea.active {
+main > .operateArea-group  > .upload-group > .uploadArea.active {
   padding: 150px 80px;
   border-radius: 20px;
   font-size: 16px;
@@ -122,7 +122,7 @@ main > .operateArea-group > .uploadArea.active {
   margin: 20px 40px;
   flex-direction: column;
 }
-main > .operateArea-group > .uploadArea {
+main > .operateArea-group  > .upload-group >   .uploadArea {
   display: none;
 }
 
@@ -139,10 +139,10 @@ main > .operateArea-group > .modifyArea.active {
 main > .operateArea-group > .modifyArea {
   display: none;
 }
-main > .operateArea-group > .uploadArea:hover {
+main > .operateArea-group  > .upload-group > .uploadArea:hover {
   cursor: pointer;
 }
 
-main > .operateArea-group > .uploadStatus {
+main > .operateArea-group  > .upload-group > .uploadStatus {
   padding-left: 40px;
 }
