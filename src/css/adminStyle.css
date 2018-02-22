@@ -127,15 +127,17 @@ main > .operateArea-group > .uploadArea {
 }
 
 main > .operateArea-group > .modifyArea.active {
+  display: flex;
   padding: 150px 80px;
   border-radius: 20px;
   border: 2px solid #ddd;
   width: 450px;
+  min-height: 300px;
   margin: 20px 40px;
   flex-direction: column;
 }
-main > .operateArea-group > .modifyArea{
-    display: none;
+main > .operateArea-group > .modifyArea {
+  display: none;
 }
 main > .operateArea-group > .uploadArea:hover {
   cursor: pointer;

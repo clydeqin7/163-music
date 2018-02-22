@@ -1,7 +1,6 @@
 {
   "name": "163-music",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "dependencies": {
     "qiniu": "^7.1.2",
@@ -22,5 +21,6 @@
   "bugs": {
     "url": "https://github.com/clydeqin7/163-music/issues"
   },
-  "homepage": "https://github.com/clydeqin7/163-music#readme"
+  "homepage": "https://github.com/clydeqin7/163-music#readme",
+  "description": ""
 }
