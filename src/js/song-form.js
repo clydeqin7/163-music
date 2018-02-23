@@ -27,6 +27,12 @@
             html = html.replace(`__${string}__`, data[string] || '')
         })
         $(this.el).html(html)
+    },
+    showSongForm(){
+        $(this.el).addClass('active')
+    },
+    hiddenSongForm(){
+        $(this.el).removeClass('active')
     }
 
   };
@@ -40,6 +46,13 @@
           this.view = view 
           this.model = model
           this.view.render(this.model.data)
+          window.eventHub.on('triggerClick', (data)=>{
+              if(data.id === 'modifyTrigger'){
+                  this.view.showSongForm()
+              }else{
+                  this.view.hiddenSongForm()
+              }
+          })
       }
   };
 

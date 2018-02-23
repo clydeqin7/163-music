@@ -3,6 +3,12 @@
         el: "main > .operateArea-group > .upload-group",
         find(selector){
             return $(this.el).find(selector)[0]
+        },
+        showUploadArea(){
+            $(this.el).addClass('active')
+        },
+        hiddenUploadArea(){
+            $(this.el).removeClass('active')
         }
     }
     let model = {}
@@ -11,6 +17,13 @@
             this.view = view
             this.model = model
             this.initQiniu()
+            window.eventHub.on('triggerClick', (data)=>{
+                if(data.id === 'uploadTrigger'){
+                    this.view.showUploadArea()
+                }else{
+                    this.view.hiddenUploadArea()
+                }
+            })
         },
         initQiniu(){
         var uploader = Qiniu.uploader({
