@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "dependencies": {
+    "leancloud-storage": "^3.6.0",
     "qiniu": "^7.1.2",
     "qiniu-js": "^2.0.2"
   },
