@@ -1,10 +1,8 @@
 {
     let view = {
-        el: "main > .songList-group",
+        el: "main > .songList-group > .songList",
         template: `
-        <h2>歌曲列表</h2>
-        <ul>
-            <li class="selected">歌曲*1</li>
+            <li class='selected'>歌曲*1</li>
             <li>歌曲*2</li>
             <li>歌曲*3</li>
             <li>歌曲*4</li>
@@ -14,8 +12,9 @@
             <li>歌曲*8</li>
             <li>歌曲*9</li>
             <li>歌曲*10</li>
-        </ul>
+            <li>歌曲*11</li>                                                       
         `,
+        
         render(data){
             $(this.el).html(this.template)
         }

@@ -19,11 +19,15 @@
     </div>
     <main>
         <div class="songList-group">
+           <h2>歌曲列表</h2>
+           <ul class="songList"></ul>
         </div>
         <div class="operateArea-group">
             <div class="operateTrigger">
             </div>
             <div class="modifyArea">
+            </div>
+            <div class="newSongArea">
             </div>
             <div class="upload-group active">
                 <div class="uploadArea" id="uploadArea">
@@ -34,16 +38,18 @@
             </div>
         </div>
     </main>
+        <div class="bottomBar"></div>
 
     <script src="./js/event-hub.js"></script>
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script src="./js/operateTrigger.js"></script>
-    <script src="./js/song-list.js"></script>  
-    <script src="./js/song-form.js"></script>      
+    <script src="./js/song-list.js"></script>
+    <script src="./js/song-form.js"></script>
+    <script src="./js/new-song.js"></script>
     <script src="../vendors/moxie.js"></script>
     <script src="../node_modules/plupload/js/plupload.dev.js"></script>
     <script src="../node_modules/qiniu-js/dist/qiniu.min.js"></script>
-    <script src="./js/upload-song.js"></script>          
+    <script src="./js/upload-song.js"></script>
 </body>
 
 </html>

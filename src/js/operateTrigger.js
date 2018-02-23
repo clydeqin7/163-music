@@ -3,7 +3,8 @@
     el: "main > .operateArea-group > .operateTrigger",
     template: `
          <ul>
-            <li id="uploadTrigger" class='active'>上传歌曲</li>
+            <li id="uploadTrigger"  class='active'>上传歌曲</li>
+            <li id="newSongTrigger" >新增歌曲</li>
             <li id="modifyTrigger">编辑歌曲</li>
         </ul>
     `,

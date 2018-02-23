@@ -28,7 +28,7 @@
         initQiniu(){
         var uploader = Qiniu.uploader({
             runtimes: 'html5',    //上传模式,依次退化
-            browse_button: this.view.find("#uploadArea"),       //上传选择的点选按钮，**必需**
+            browse_button: this.view.find("#xxx"),       //上传选择的点选按钮，**必需**
             uptoken_url: 'http://localhost:8888/uptoken',
             domain: 'p4704g6xu.bkt.clouddn.com',   //bucket 域名，下载资源时用到，**必需**
             get_new_uptoken: false,  //设置上传文件的时候是否每次都重新获取新的token
