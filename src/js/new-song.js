@@ -1,6 +1,9 @@
 {
   let view = {
     el: "main > .operateArea-group > .newSongArea",
+    init() {
+      this.$el = $(this.el);
+    },
     template: `
         <form class="form">
             <div class="row">
@@ -35,18 +38,56 @@
       $(this.el).removeClass("active");
     }
   };
-  let model = {};
+  let model = {
+    data: {
+      name: "",
+      singer: "",
+      url: "",
+      id: ""
+    },
+    create(data) {
+      var Song = AV.Object.extend("Song");
+      var song = new Song();
+      song.set("name", data.name);
+      song.set("singer", data.singer);
+      song.set("url", data.url);
+      song.save().then(
+        function(todo) {
+          console.log("objectId is " + todo.id);
+        },
+        function(error) {
+          console.error(error);
+        }
+      );
+    }
+  };
   let controller = {
     init(view, model) {
       this.view = view;
       this.model = model;
       this.view.render();
+      this.view.init();
+      this.bindEvents();
       window.eventHub.on("triggerClick", data => {
         if (data.id === "newSongTrigger") {
           this.view.showSongForm();
         } else {
           this.view.hiddenSongForm();
         }
+      });
+    },
+    create(){
+        let needs = 'name singer url'.split(' ')
+        let data = {}
+        needs.map((string) => {
+            data[string] = this.view.$el.find(`[name="${string}"]`).val()
+        })
+        this.model.create(data)
+    },
+    bindEvents() {
+      this.view.$el.on("submit", "form", e => {
+        e.preventDefault();
+        this.create()
       });
     }
   };
