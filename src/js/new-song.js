@@ -54,6 +54,7 @@
       song.save().then(
         function(todo) {
           console.log("objectId is " + todo.id);
+          window.eventHub.emit("new");
         },
         function(error) {
           console.error(error);
@@ -68,6 +69,24 @@
       this.view.render();
       this.view.init();
       this.bindEvents();
+      this.bindEventHub();
+    },
+    create() {
+      let needs = "name singer url".split(" ");
+      let data = {};
+      needs.map(string => {
+        data[string] = this.view.$el.find(`[name="${string}"]`).val();
+        // TODO: 验证值是否为空
+      });
+      this.model.create(data);
+    },
+    bindEvents() {
+      this.view.$el.on("submit", "form", e => {
+        e.preventDefault();
+        this.create();
+      });
+    },
+    bindEventHub() {
       window.eventHub.on("triggerClick", data => {
         if (data.id === "newSongTrigger") {
           this.view.showSongForm();
@@ -75,19 +94,9 @@
           this.view.hiddenSongForm();
         }
       });
-    },
-    create(){
-        let needs = 'name singer url'.split(' ')
-        let data = {}
-        needs.map((string) => {
-            data[string] = this.view.$el.find(`[name="${string}"]`).val()
-        })
-        this.model.create(data)
-    },
-    bindEvents() {
-      this.view.$el.on("submit", "form", e => {
-        e.preventDefault();
-        this.create()
+      window.eventHub.on("new",()=>{
+        this.view.render()
+        alert('新增歌曲成功')
       });
     }
   };

@@ -1,32 +1,54 @@
 {
-    let view = {
-        el: "main > .songList-group > .songList",
-        template: `
-            <li class='selected'>歌曲*1</li>
-            <li>歌曲*2</li>
-            <li>歌曲*3</li>
-            <li>歌曲*4</li>
-            <li>歌曲*5</li>
-            <li>歌曲*6</li>
-            <li>歌曲*7</li>
-            <li>歌曲*8</li>
-            <li>歌曲*9</li>
-            <li>歌曲*10</li>
-            <li>歌曲*11</li>                                                       
-        `,
-        
-        render(data){
-            $(this.el).html(this.template)
-        }
-    }
-    let model = {}
-    let controller = {
-        init(view, model){
-            this.view = view
-            this.model = model
-            this.view.render({})
-        }
-    }
+  let view = {
+    el: "main > .songList-group > .songList",
+    template: ``,
 
-    controller.init(view, model)
+    render(data={}) {
+      let $el = $(this.el)
+      $el.html(this.template);
+      let {songs} = data
+      let liList = songs.map((song)=>{
+          let $li = $('<li></li>').text(song.name).attr('data-song-id', song.id)
+          return $li
+      })
+      liList.map((domLi)=>{
+        $el.append(domLi)
+      })
+    }
+  };
+  let model = {
+    data: {
+      songs: []
+    },
+    find() {
+      var query = new AV.Query("Song");
+      return query.find().then((songs)=>{
+          this.data.songs = songs.map((song)=>{
+              // TODO: 学习这个语法 ES6
+              return {id: song.id, ...song.attributes}
+          })
+      })
+    }
+  };
+  let controller = {
+    init(view, model) {
+      this.view = view;
+      this.model = model;
+      this.view.render(this.model.data);
+      this.getAllSong()
+      this.bindEventHub()
+    },
+    getAllSong(){
+       this.model.find().then(()=>{
+           this.view.render(this.model.data)
+       })
+    },
+    bindEventHub(){
+        window.eventHub.on('new', ()=>{
+            this.getAllSong()
+        })
+    }
+  };
+
+  controller.init(view, model);
 }
