@@ -46,13 +46,26 @@
           this.view = view 
           this.model = model
           this.view.render(this.model.data)
+          this.bindEvent()
+          this.bindEventHub()
+      },
+      bindEvent(){
+          $(this.view.el).on('submit', `form`, (e)=>{
+                e.preventDefault()
+          })
+      },
+      bindEventHub(){
+          window.eventHub.on('songSelected', (data)=>{
+            this.view.render(JSON.parse(data))
+          }),
           window.eventHub.on('triggerClick', (data)=>{
               if(data.id === 'modifyTrigger'){
                   this.view.showSongForm()
               }else{
                   this.view.hiddenSongForm()
+                  window.eventHub.emit('deactiveSong')
               }
-          })
+          })         
       }
   };
 

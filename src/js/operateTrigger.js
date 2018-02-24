@@ -25,13 +25,23 @@
       this.view = view;
       this.model = model;
       this.view.render(this.model.data);
+      this.bindEvent()
+      this.bindEventHub()
+    },
+    bindEvent(){
+      $(this.view.el).on("click", "li", e => {
+        window.eventHub.emit("triggerClick", e.currentTarget);
+      });       
+    },
+    bindEventHub(){
       window.eventHub.on("triggerClick", data => {
         this.view.activeItem(data);
       });
-      $(this.view.el).on("click", "li", e => {
-        window.eventHub.emit("triggerClick", e.currentTarget);
-      });
-    },
+      // TODO: 
+     window.eventHub.on('songSelected', ()=>{
+         $("#modifyTrigger").click()
+     })
+    }
   };
 
   controller.init(view, model);
