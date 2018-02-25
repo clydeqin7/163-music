@@ -80,6 +80,9 @@
       });
       window.eventHub.on('deactiveSong', ()=>{
           this.view.clearActive()
+      });
+      window.eventHub.on('update', ()=>{
+        this.getAllSong()
       })
     }
   };

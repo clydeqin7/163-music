@@ -53,7 +53,6 @@
       song.set("url", data.url);
       song.save().then(
         function(todo) {
-          console.log("objectId is " + todo.id);
           window.eventHub.emit("new");
         },
         function(error) {
@@ -98,6 +97,10 @@
         this.view.render()
         alert('新增歌曲成功')
       });
+      window.eventHub.on('uploadEnd', (data)=>{
+          this.model.data.url = data
+          this.view.render(this.model.data)
+      })         
     }
   };
   controller.init(view, model);

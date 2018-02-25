@@ -1,6 +1,9 @@
 {
   let view = {
     el: "main > .operateArea-group > .modifyArea",
+    init(){
+        this.$el = $(this.el)
+    },
     template: `
     <form class="form">
          <div class="row">
@@ -38,25 +41,55 @@
   };
   let model = {
       data: {
-       name: '1 ', singer: ' 2', url: ' 3', id: ' '
+       name: '', singer: '', url: '', id: ' '
      },
+     update(data){
+        // 第一个参数是 className，第二个参数是 objectId
+        var song = AV.Object.createWithoutData('Song', model.data.id);
+        // 修改属性
+        song.set('name', data.name);
+        song.set('singer', data.singer);
+        song.set('url', data.url);
+        
+        // 保存到云端
+        song.save().then(()=>{
+            window.eventHub.emit('update', )
+            alert('更新成功')
+        });
+     }
   };
   let controller = {
       init(view, model){
           this.view = view 
           this.model = model
           this.view.render(this.model.data)
+          this.view.init()
           this.bindEvent()
           this.bindEventHub()
+      },
+      update(){
+        let needs = "name singer url".split(" ");
+        let data = {};
+        needs.map(string => {
+            data[string] = this.view.$el.find(`[name="${string}"]`).val();
+        });
+        this.model.update(data);          
+      },
+      clear(){
+          this.model.data.id = '';
+          this.view.render()
       },
       bindEvent(){
           $(this.view.el).on('submit', `form`, (e)=>{
                 e.preventDefault()
+                this.update()
           })
       },
       bindEventHub(){
           window.eventHub.on('songSelected', (data)=>{
-            this.view.render(JSON.parse(data))
+            let tempData = JSON.parse(data)
+            this.model.data.id = tempData['id']
+            this.view.render(tempData)
           }),
           window.eventHub.on('triggerClick', (data)=>{
               if(data.id === 'modifyTrigger'){
@@ -64,8 +97,12 @@
               }else{
                   this.view.hiddenSongForm()
                   window.eventHub.emit('deactiveSong')
+                  this.clear()
               }
-          })         
+          }),
+          window.eventHub.on('update', (data)=>{
+            //   this.view.render()
+          })      
       }
   };
 

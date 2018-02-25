@@ -40,7 +40,10 @@
       // TODO: 
      window.eventHub.on('songSelected', ()=>{
          $("#modifyTrigger").click()
-     })
+     }),
+     window.eventHub.on('uploadEnd', ()=>{
+         $("#newSongTrigger").click()
+     })     
     }
   };
 
