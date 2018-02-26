@@ -259,7 +259,7 @@ main > .operateArea-group > .modifyArea > form > .row > button{
   left: 47%;
   border: 0px solid white;
   border-radius: 50%;
-  animation: xxxdfr  2s infinite;
+  animation: xxxdfr  linear 2s infinite;
 }
 
 @keyframes  xxxdfr {
