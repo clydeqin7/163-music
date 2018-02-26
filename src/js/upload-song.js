@@ -45,10 +45,11 @@
                 'BeforeUpload': function (up, file) {
                     // 每个文件上传前,处理相关的事情
                 },
-                'UploadProgress': function (up, file) {
+                'UploadProgress': (up, file) =>{
                     // 每个文件上传时,处理相关的事情
-                    // ! this 不能使用
+                    // TODO: 上传文字中文字提示美化
                     // this.view.find("#uploadStatus").textContent = '上传中'
+                    $('#site-loading').css('visibility', 'visible')
                 },
                 'FileUploaded': function (up, file, info) {
                     // this.view.find("#uploadStatus").textContent = '上传完毕'
@@ -64,6 +65,7 @@
                     var response = JSON.parse(info.response);
                     var sourceLink ="http://"+ domain +"/"+ encodeURIComponent(response.key); //获取上传成功后的文件的Url
 
+                     $('#site-loading').css('visibility', 'hidden')
                     window.eventHub.emit('uploadEnd', sourceLink)
                 },
                 'Error': function (up, err, errTip) {

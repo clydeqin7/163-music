@@ -76,6 +76,7 @@
     },
     bindEventHub() {
       window.eventHub.on("new", () => {
+        this.model.data.selectedId = '';
         this.getAllSong();
       });
       window.eventHub.on('deactiveSong', ()=>{

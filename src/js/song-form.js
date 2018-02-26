@@ -44,6 +44,10 @@
        name: '', singer: '', url: '', id: ' '
      },
      update(data){
+         if(model.data.id === ''){
+             alert('请先从歌曲列表选中一首歌~。~')
+             return
+         }
         // 第一个参数是 className，第二个参数是 objectId
         var song = AV.Object.createWithoutData('Song', model.data.id);
         // 修改属性
