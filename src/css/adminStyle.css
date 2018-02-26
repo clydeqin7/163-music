@@ -50,7 +50,7 @@ main {
 }
 
 main > .songList-group {
-  width: 400px;
+  width: 240px;
   height: 100%;
   padding-top: 10px;
   background-color: #f9f9f9;
@@ -107,7 +107,7 @@ main > .songList-group > ul > li {
   color: #000;
   font-size: 14px;
   height: 62px;
-  width: 400px;
+  width: 240px;
   padding: 10px 0 10px 20px;
   display: flex;
   align-items: center;
@@ -122,7 +122,7 @@ main > .songList-group > ul > li.selected {
 }
 
 main > .operateArea-group {
-  width: 580px;
+  width: 740px;
   height: 100%;
   min-height: 500px;
   background-color: #fff;
@@ -131,7 +131,7 @@ main > .operateArea-group {
 
 main > .operateArea-group > .operateTrigger {
   width: 540px;
-  margin: 0 20px;
+  margin: 0 100px;
   height: 40px;
   border-radius: 0 0 10px 10px;
   background-color: #c20c0c;
@@ -168,8 +168,8 @@ main > .operateArea-group  > .upload-group.active > .uploadArea {
   font-size: 16px;
   border: 2px dashed #ddd;
   display: block;
-  width: 450px;
-  margin: 20px 65px;
+  width: 540px;
+  margin: 50px 100px;
   flex-direction: column;
 }
 main > .operateArea-group  > .upload-group.active > .uploadArea >div{
@@ -187,9 +187,9 @@ main > .operateArea-group > .modifyArea.active {
   padding: 80px 20px;
   border-radius: 20px;
   border: 2px solid #ddd;
-  width: 450px;
   min-height: 300px;
-  margin: 20px 65px;
+  width: 540px;
+  margin: 50px 100px;
   flex-direction: column;
 }
 main > .operateArea-group > .newSongArea,
@@ -206,7 +206,7 @@ main > .operateArea-group  > .upload-group > .uploadStatus {
 
 main > .operateArea-group > .newSongArea > form,
 main > .operateArea-group > .modifyArea > form{
-  width: 410px;
+  width: 500px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -238,7 +238,7 @@ main > .operateArea-group > .modifyArea > form > .row > button{
   z-index: 99;
   height: 20px;
   width: 100%;
-  background-color: #333;
+  background-color: #242424;
 }
 
 .site-loading{
