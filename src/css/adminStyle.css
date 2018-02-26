@@ -24,6 +24,7 @@ main {
   height: 70px;
   width: 100%;
   background-color: #242424;
+  border-bottom: 2px solid #C20C0C;
 }
 
 .topBar-group > .logo {
@@ -48,16 +49,29 @@ main {
 }
 
 main > .songList-group {
-  width: 450px;
+  width: 400px;
   height: 100%;
-  padding-top: 40px;
+  padding-top: 10px;
   background-color: #f9f9f9;
   border-left: 1px solid #d3d3d3;
   border-right: 1px solid #d3d3d3;
   display: flex;
   flex-direction: column;
 }
-main > .songList-group > h2 {
+
+main > .songList-group > .songListTitle{
+}
+
+main > .songList-group > .songListTitle > div{
+  height: 22px;
+  width: 100%;
+  background: #e6e6e6;
+  border: 1px solid #CCCCCC;
+  border-top: 2px solid #C20C0C;
+  text-align: left;
+  padding-left: 18px;
+}
+main > .songList-group  h2 {
   height: 28px;
   font-family: simsun, \5b8b\4f53;
   padding: 0 10px 12px 15px;
@@ -71,8 +85,30 @@ main > .songList-group > ul {
   flex-grow: 1;
 }
 
+main > .songList-group > ul::-webkit-scrollbar-track
+{
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.3);;
+	background-color: #f9f9f9;
+}
+
+main > .songList-group > ul::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #f9f9f9;
+}
+
+main > .songList-group > ul::-webkit-scrollbar-thumb
+{
+	box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #c6c6c6;
+  border-radius: 3px;
+}
+
 main > .songList-group > ul > li {
+  color: #000;
+  font-size: 14px;
   height: 62px;
+  width: 400px;
   padding: 10px 0 10px 20px;
   display: flex;
   align-items: center;
@@ -87,7 +123,7 @@ main > .songList-group > ul > li.selected {
 }
 
 main > .operateArea-group {
-  width: 530px;
+  width: 580px;
   height: 100%;
   min-height: 500px;
   background-color: #fff;
@@ -95,8 +131,10 @@ main > .operateArea-group {
 }
 
 main > .operateArea-group > .operateTrigger {
-  width: 100%;
+  width: 540px;
+  margin: 0 20px;
   height: 40px;
+  border-radius: 0 0 10px 10px;
   background-color: #c20c0c;
   display: flex;
   justify-content: center;
@@ -135,7 +173,7 @@ main > .operateArea-group  > .upload-group.active > .uploadArea {
   align-items: center;
   justify-content: center;
   width: 450px;
-  margin: 20px 40px;
+  margin: 20px 65px;
   flex-direction: column;
 }
 main > .operateArea-group  > .upload-group >   .uploadArea {
@@ -149,7 +187,7 @@ main > .operateArea-group > .modifyArea.active {
   border: 2px solid #ddd;
   width: 450px;
   min-height: 300px;
-  margin: 20px 40px;
+  margin: 20px 65px;
   flex-direction: column;
 }
 main > .operateArea-group > .newSongArea,
