@@ -21,9 +21,7 @@
             this.$el = $(this.el)
         },
         render(data){
-            console.log('xxxxxxx')
             let {songs} = data
-            console.log(songs)
             songs.map((song)=>{
                 let $li =  $(this.template
                     .replace('{{song.name}}', song.name)
