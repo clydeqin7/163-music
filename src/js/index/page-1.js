@@ -19,6 +19,8 @@
             this.view.init()
             this.bindEvents()
             this.bindEventHub()
+            this.loadModule1()
+            this.loadModule2()
         },
         bindEvents(){},
         bindEventHub(){
@@ -29,6 +31,22 @@
                     this.view.hide()
                 }
             })
+        },
+        loadModule1(){
+            let script1 = document.createElement('script')
+            script1.src = "./js/index/page-1-1.js"
+            script1.onload = function(){
+                console.log('模块1加载成功')
+            }
+            document.body.append(script1)
+        },
+        loadModule2(){
+            let script2 = document.createElement('script')
+            script2.src = "./js/index/page-1-2.js"
+            script2.onload = function(){
+                console.log('模块2加载成功')
+            }
+            document.body.append(script2)            
         }
     }
 
