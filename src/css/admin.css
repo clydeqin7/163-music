@@ -260,13 +260,6 @@ main > .operateArea-group > .modifyArea > form > .row > button{
     border: none;
 }
 
-.bottomBar{
-  z-index: 99;
-  height: 20px;
-  width: 100%;
-  background-color: #242424;
-}
-
 .site-loading{
   visibility:  hidden;
   position: fixed;

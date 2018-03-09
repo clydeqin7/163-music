@@ -5,26 +5,34 @@
       this.$el = $(this.el);
     },
     template: `
-        <form class="form">
-            <div class="row">
-            <label>歌名 </label>
-            <input name="name" type="text" value="__name__">
-            </div>
-            <div class="row">
-            <label>歌手</label>
-            <input name="singer" type="text" value="__singer__">
-            </div>
-            <div class="row">
-            <label>外链</label>
-            <input name="url" type="text" value="__url__">
-            </div>
-            <div class="row actions">
-            <button type="submit">保存</button>
-            <div>      
-        </form>      
+    <form class="form">
+        <div class="row">
+        <label>歌名 </label>
+        <input name="name" type="text" value="__name__">
+        </div>
+        <div class="row">
+        <label>歌手</label>
+        <input name="singer" type="text" value="__singer__">
+        </div>
+        <div class="row">
+        <label>外链</label>
+        <input name="url" type="text" value="__url__">
+        </div>
+        <div class="row">
+        <label>封面</label>
+        <input name="cover" type="text" value="__cover__">
+        </div>
+        <div class="row">
+        <label>歌词</label>
+        <textarea  cols="30" rows="5" style="resize:none;" name="lyrics">__lyrics__</textarea>
+        </div>                        
+        <div class="row actions">
+        <button type="submit">保存</button>
+        <div>      
+    </form>      
         `,
     render(data = {}) {
-      let placeholders = ["name", "url", "singer", "id"];
+      let placeholders = ['name', 'url', 'singer', 'id', 'cover', 'lyrics'];
       let html = this.template;
       placeholders.map(string => {
         html = html.replace(`__${string}__`, data[string] || "");
@@ -40,10 +48,7 @@
   };
   let model = {
     data: {
-      name: "",
-      singer: "",
-      url: "",
-      id: ""
+      name: '', singer: '', url: '', id: '', cover:'', lyrics:''
     },
     create(data) {
       var Song = AV.Object.extend("Song");
@@ -51,6 +56,8 @@
       song.set("name", data.name);
       song.set("singer", data.singer);
       song.set("url", data.url);
+      song.set('cover', data.cover);
+      song.set('lyrics', data.lyrics);      
       song.save().then(
         function(todo) {
           window.eventHub.emit("new");
