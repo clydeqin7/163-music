@@ -81,7 +81,10 @@
         getSong(id){
             var query = new AV.Query('Song')
             return query.get(id).then((song) =>{
-                Object.assign(this.data.song, {id: song.id, ...song.attributes})
+                console.log(song)
+                // Object.assign(this.data.song, {id: song.id, ...song.attributes})   ==>        
+                let obj = Object.assign({id: song,id}, song.attributes)
+                Object.assign(this.data.song, obj)                               
             })
         }       
     }
